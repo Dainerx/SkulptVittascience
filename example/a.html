@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="../dist/skulpt.min.js" type="text/javascript"></script>
+    <script src="../dist/skulpt-stdlib.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+</head>
+
+<body>
+    <div id="mycanvas" height="500" width="800" style="border-style: solid;"></div>
+
+    <textarea id="code" rows="24" cols="80">
+while True:
+    pass
+</textarea>
+    <button id="runPython" type="button">Run</button>
+    <script>
+        $("#runPython").click(function () {
+            var prog = document.getElementById("code").value;
+            Sk.externalLibraries = {
+                numpy: {
+                    path: 'https://raw.githubusercontent.com/trinketapp/skulpt_numpy/master/dist/numpy/__init__.js',
+                    dependencies: ['https://raw.githubusercontent.com/trinketapp/skulpt_numpy/master/deps/math.js'],
+                }
+            };
+            function builtinRead(x) {
+                if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined)
+                    throw "File not found: '" + x + "'";
+                return Sk.builtinFiles["files"][x];
+            }
+            (Sk.TurtleGraphics || (Sk.TurtleGraphics = {})).target = 'mycanvas';
+
+            console.log(Sk);
+            Sk.execLimit = 5000;
+            console.log(Sk.execLimit);
+            Sk.configure({ read: builtinRead });
+
+            Sk.misceval.asyncToPromise(function () {
+                return Sk.importMainWithBody("<stdin>", false, prog, true);
+            });
+        });
+    </script>
+</body>
+
+</html>
