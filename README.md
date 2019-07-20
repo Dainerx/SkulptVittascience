@@ -6,6 +6,10 @@ Skulpt is a Javascript implementation of Python 2.x.  Python that runs in your b
 
 [![Build Status](https://travis-ci.org/trinketapp/skulpt.png)](https://travis-ci.org/trinketapp/skulpt)
 
+## Skulpt Vittascience 
+
+Skulpt Vittascience is a fork from [Skulpt Trinket](https://github.com/trinketapp/skulpt). We are building custom modules that are fulfilling our users' needs on our [e-learning platform](https://en.vittascience.com/).
+
 ## Origins
 
 Skulpt is the brainchild of Scott Graham.  See [Skulpt.org](http://skulpt.org) for some early demos of skulpt in action.
