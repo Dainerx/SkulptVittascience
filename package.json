@@ -41,8 +41,8 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "jshint": "~2.5.2",
-    "jscs": "~1.12",
+    "jshint": "~2.13.5",
+    "jscs": "~3.0",
     "jsdoc": "~3.3.2"
   }
 }
